@@ -1,0 +1,7 @@
+{
+  "name": "TransitPH",
+  "description": "Official TransitPH - CALABARZON Integrated Multi-Modal Transit Navigation, Fare Guide, and Commuter Safety Platform (Production Release v1.0.0)",
+  "requestFramePermissions": ["geolocation"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+

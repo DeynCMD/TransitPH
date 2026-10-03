@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">TransitPH</string>
+    <string name="title_activity_main">TransitPH</string>
+    <string name="package_name">com.transitph.app</string>
+    <string name="custom_url_scheme">com.transitph.app</string>
+</resources>
