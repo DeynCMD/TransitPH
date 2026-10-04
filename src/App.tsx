@@ -39,6 +39,7 @@ export default function App() {
         setUser(user);
       } catch (e) {
         console.error('Auth init error:', e);
+        setUser(null);
       } finally {
         setIsInitializing(false);
       }
@@ -48,8 +49,18 @@ export default function App() {
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
-        const user = await getCurrentUser();
-        setUser(user);
+        try {
+          const user = await getCurrentUser();
+          if (user) {
+            setUser(user);
+          } else {
+            console.warn('Auth event triggered but no valid user profile found.');
+            setUser(null);
+          }
+        } catch (err) {
+          console.error('Error during auth state change user fetch:', err);
+          setUser(null);
+        }
       } else if (event === 'SIGNED_OUT') {
         setUser(null);
       }
@@ -160,6 +171,10 @@ export default function App() {
   }
 
   const renderScreenContent = () => {
+    if (!currentUser) {
+      return null;
+    }
+
     if (isAdminConsoleOpen && currentUser.role === 'ADMIN') {
       return (
         <AdminDashboardScreen
@@ -170,6 +185,8 @@ export default function App() {
         />
       );
     }
+
+
 
     switch (activeTab) {
       case 'home':

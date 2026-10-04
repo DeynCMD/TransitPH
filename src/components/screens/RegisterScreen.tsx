@@ -57,7 +57,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({
       if (authError) throw authError;
 
       if (data?.user) {
-        alert('Verification email sent! Please check your inbox and click the link to activate your account.');
+        alert('Account created successfully! A verification email has been sent to your inbox. Please verify your email before signing in.');
         onNavigateLogin();
       }
     } catch (err: any) {

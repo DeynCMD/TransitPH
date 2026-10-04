@@ -88,17 +88,17 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
 
           {/* User Profile Pill */}
-          {currentUser && (
+            {currentUser && (
             <button
               onClick={onNavigateToProfile}
               className="flex items-center gap-2 bg-emerald-900/80 hover:bg-emerald-900 text-white pl-2 pr-3 py-1 rounded-full border border-emerald-600/50 transition-colors"
             >
               <div className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-xs font-bold text-emerald-950">
-                {currentUser.fullName.charAt(0)}
+                {(currentUser.fullName || 'U').charAt(0)}
               </div>
               <div className="text-left hidden sm:block leading-tight">
-                <span className="text-xs font-medium block max-w-[100px] truncate">{currentUser.fullName}</span>
-                <span className="text-[10px] text-emerald-300 font-bold block">{currentUser.role}</span>
+                <span className="text-xs font-medium block max-w-[100px] truncate">{currentUser.fullName || 'New User'}</span>
+                <span className="text-[10px] text-emerald-300 font-bold block">{currentUser.role || 'USER'}</span>
               </div>
             </button>
           )}

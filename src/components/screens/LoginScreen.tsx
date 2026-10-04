@@ -37,7 +37,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({
       const user = await getCurrentUser();
 
       if (!user) {
-        throw new Error('Could not retrieve user profile.');
+        throw new Error('Could not retrieve user profile. Please try again or contact support.');
       }
 
       onLoginSuccess(user);

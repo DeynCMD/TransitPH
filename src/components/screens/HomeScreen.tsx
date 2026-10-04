@@ -44,19 +44,6 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
     );
   }
 
-  // If the user is logged in but profile data is missing, show a loading state
-  // but DO NOT let the app crash.
-  const isProfileLoading = !currentUser.fullName || !currentUser.role;
-
-  if (isProfileLoading) {
-    return (
-      <div className="flex flex-col items-center justify-center h-full text-center p-6 space-y-3">
-        <div className="animate-spin rounded-full h-8 w-8 border-4 border-emerald-600 border-t-transparent"></div>
-        <p className="text-xs text-slate-500 font-medium">Loading your profile...</p>
-      </div>
-    );
-  }
-
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onQuickSearch(origin, destination);

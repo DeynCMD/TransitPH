@@ -46,7 +46,7 @@ export const ProfileScreen: React.FC<ProfileScreenProps> = ({
       <div className="bg-white rounded-2xl border border-slate-200 p-4 shadow-sm">
         <div className="flex items-center gap-3.5">
           <div className="w-12 h-12 rounded-2xl bg-emerald-600 text-white font-black text-lg flex items-center justify-center shadow-sm">
-            {currentUser.fullName.charAt(0)}
+            {(currentUser.fullName || 'U').charAt(0)}
           </div>
           <div className="flex-1">
             <div className="flex items-center gap-2">

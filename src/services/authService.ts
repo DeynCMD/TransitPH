@@ -51,7 +51,18 @@ export async function getCurrentUser(): Promise<User | null> {
     .eq('id', session.user.id)
     .single();
 
-  if (error || !profile) return null;
+  if (error || !profile) {
+    console.warn('User session exists but profile is missing or error occurred:', error);
+    // Return a partial user object to indicate session exists but profile is incomplete
+    // This prevents the app from thinking the user is completely logged out
+    // but allows the app to handle the missing profile state.
+    return {
+      id: session.user.id,
+      email: session.user.email!,
+      fullName: 'New User',
+      role: 'USER', // Default role to prevent crashes in role-based rendering
+    };
+  }
 
   return {
     id: session.user.id,
